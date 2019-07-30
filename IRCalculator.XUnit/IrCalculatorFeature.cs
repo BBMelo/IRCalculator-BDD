@@ -1,8 +1,6 @@
 using IRCalculator.XUnit.Driver;
-using System;
 using System.Globalization;
 using Xbehave;
-using Xunit;
 
 namespace IRCalculator.XUnit
 {
@@ -21,7 +19,7 @@ namespace IRCalculator.XUnit
         [Example(6357.66, 5478.66)]
         [Example(3152.38, 3034.31)]
         [Example(16837.66, 13076.66)]
-        public void CalcularIR(double salario, int salarioExperado)
+        public void CalcularIR(decimal salario, int salarioExperado)
         {
             $"Dado um novo cálculo de IR"
                  .x(() => { _driver.NewCalc(); });

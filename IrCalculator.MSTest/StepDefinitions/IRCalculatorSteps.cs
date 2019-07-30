@@ -1,9 +1,6 @@
 ﻿using IRCalculator.MSTest.Driver;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using TechTalk.SpecFlow;
 
 namespace IRCalculator.MSTest.steps
@@ -25,29 +22,25 @@ namespace IRCalculator.MSTest.steps
         [Given(@"um novo cálculo de IR")]
         public void GivenNovoCalculo()
         {
-            _driver.NewCalc();
-          
+            _driver.NewCalc();          
         }
 
         [Given(@"preencho a propriedade salário com o valor (.*)")]
         public void GivenAdicionoOSalario(string salario)
         {
-            _driver.AdicionarSalario(Convert.ToDouble(salario));
-           
+            _driver.AdicionarSalario(Convert.ToDecimal(salario));           
         }
 
         [When(@"executo o cálculo do IR")]
         public void WhenExecutoCalculo()
         {
-            _driver.CalcularIR();
-          
+            _driver.CalcularIR();          
         }
 
         [Then("o salário liquido deverá ser (.*)")]
         public void ThenTheResultShouldBe(string salarioEsperado)
         {
-            _driver.ChecarSalario(Convert.ToDouble(salarioEsperado));
-           
+            _driver.ChecarSalario(Convert.ToDecimal(salarioEsperado));           
         }
     }
 }

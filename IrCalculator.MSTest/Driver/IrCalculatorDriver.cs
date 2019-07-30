@@ -1,32 +1,17 @@
 ﻿using FluentAssertions;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace IRCalculator.MSTest.Driver
 {
     public class IRCalculatorDriver
     {
-        private Domain.IRCalculator _calculator;
+        private Domain.ImpostoDeRenda _calculator;
 
-        public void NewCalc()
-        {
-            _calculator = new Domain.IRCalculator();
-        }
+        public void NewCalc() => _calculator = new Domain.ImpostoDeRenda(default);
 
-        public void AdicionarSalario(double salario)
-        {
-            _calculator._salario = salario;
-        }
+        public void AdicionarSalario(decimal salario) => _calculator = new Domain.ImpostoDeRenda(salario);
 
-        public void CalcularIR()
-        {            
-            _calculator.CalculaSalario();
-        }
+        public void CalcularIR() => _calculator.CalcularIRPF();
 
-        public void ChecarSalario(double salarioEsperado)
-        {
-            _calculator._salario.Should().BeApproximately(salarioEsperado,1);
-        }
+        public void ChecarSalario(decimal salarioEsperado) => _calculator.SalarioLiquido.Should().BeApproximately(salarioEsperado, 1);
     }
 }
